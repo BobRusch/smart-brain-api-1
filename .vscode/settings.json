@@ -1,3 +1,4 @@
 {
-  "prettier.packageManager": "yarn"
+  "prettier.packageManager": "yarn",
+  "editor.fontFamily": "Operator Mono Lig"
 }

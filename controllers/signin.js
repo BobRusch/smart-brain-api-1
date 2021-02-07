@@ -24,7 +24,7 @@ const handleSignin = (db, bcrypt, req, res) => {
 
 const signinAuthentication = (db, bcrypt) => (req, res) => {
   const { authorization } = req.headers;
-  console.log(req.headers)
+
   return authorization ? getAuthTokenId(req, res)
     : handleSignin(db, bcrypt, req, res)
     .then(data =>
