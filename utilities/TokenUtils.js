@@ -20,6 +20,7 @@ const createSession = async (user) => {
 
 const getAuthTokenId = (req, res) => {
     const { authorization } = req.headers;
+    console.log(authorization)
     return redisClient.get(authorization, (err, reply) => {
       if (err || !reply) {
         return res.status(401).send('Unauthorized');

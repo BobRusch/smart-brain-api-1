@@ -1,7 +1,10 @@
 const {createSession, getAuthTokenId, signToken} = require('../utilities/TokenUtils')
 
-const registerAuthentication  = (db, bcrypt) => (req, res) => {
-  handleSignin(req, res, db, bcrypt)
+const registerAuthentication  = (db, bcrypt) => (req, res) => 
+{
+  const { email, name, password } = req.body;
+  console.log(email, name, password)
+  return handleSignin(req, res, db, bcrypt)
     .then(data =>
       (data.id && data.email) ? createSession(data) : res.status(400).json('Registration Failed'))
     .then(session => res.json(session))
@@ -10,7 +13,7 @@ const registerAuthentication  = (db, bcrypt) => (req, res) => {
 
 const handleSignin = (req, res, db, bcrypt) => {
   const { email, name, password } = req.body;
-  
+  console.log(email, name, password)
   if (!email || !name || !password) {
     return res.status(400).json('incorrect form submission');
   }
